@@ -1,0 +1,37 @@
+Bemenet: x1, x2 - rendezett T tomb, n1, n2 - egesz (tombok hossza)
+Kimenet: y - T tomb, idx - egesz
+
+fuggveny Osszefuttatas(x1,n1,x2,n2)
+ y <- letrehoz(T)[n1+n2]
+
+ n1 <- n1 + 1
+ x1[n1] <- ∞
+ n2 <- n2 + 1
+ x2[n2] <- ∞
+
+ i <- 1; j <- 1 ;db <- 0
+
+ ciklus amig i < n1 v j < n2
+
+  db <- db + 1
+  ha x1[i] < x2[j] akkor
+   y[db] <- x1[i]
+   i <- i + 1
+  kulonben ha x1[i] > x2[j] akkor
+   y[db] <- x2[j]
+   j <- j + 1
+  kulonben
+   y[db] <- x1[i]
+   i <- i + 1
+   j <- j + 1
+  elagazas vege
+ 
+ ciklus vege
+
+ vissza (y,db) 
+fuggveny vege
+
+x1 <- [2,4,5]
+x2 <- [2,3,4,7,9]
+
+print(Osszefuttatas(x1,len(x1),x2,len(x2) ))

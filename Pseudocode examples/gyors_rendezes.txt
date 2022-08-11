@@ -1,0 +1,47 @@
+Bemenet: x − T tomb, bal, jobb - egesz
+Kimenet: T - rendezett tomb
+
+fuggveny Szetvalogat(x,bal,jobb)
+
+seged <- x[bal]
+ciklus amig bal < jobb
+  ciklus amig (bal < jobb) ^ (x[jobb] > seged)
+    jobb <- jobb - 1
+  ciklus vege
+  ha bal < jobb akkor
+    x[bal] <- x[jobb]
+    bal <- bal + 1
+    ciklus amig (bal < jobb) ^ (x[bal] <= seged)
+      bal <- bal + 1
+    ciklus vege
+    ha bal < jobb akkor
+      x[jobb] <- x[bal]
+      jobb <- jobb - 1
+    elagazas vege
+  elagazas vege
+ciklus vege
+idx <- bal
+x[idx] <- seged
+vissza idx
+
+fuggveny vege
+
+
+fuggveny GyorsRendezes(x,bal,jobb)
+idx <- Szetvalogat(x,bal,jobb)
+
+ha idx > bal + 1 akkor
+  GyorsRendezes(x,bal,idx - 1)
+elagazas vege
+
+ha idx < jobb -1 akkor
+  GyorsRendezes(x,idx + 1, jobb)
+elagazas vege
+
+fuggveny vege
+
+x <- [8,4,1,10,17,2,3,5,9,23]
+
+print(x)
+GyorsRendezes(x,1,len(x))
+print(x)

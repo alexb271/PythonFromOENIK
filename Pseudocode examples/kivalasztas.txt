@@ -1,0 +1,23 @@
+Bemenet: x - T tomb; n - egesz (tomb merete); P - logikai
+Kimenet: idx - egesz
+
+fuggveny P(x)
+ ha x = 5 akkor
+  vissza igaz
+ kulonben
+  vissza hamis
+ elagazas vege
+fuggveny vege
+
+fuggveny Kivalasztas(x,n)
+ i <- 1
+ ciklus amig i <= n ^ ¬P(x[i])
+  i <- i + 1 
+ ciklus vege
+ idx <- i
+ vissza idx
+fuggveny vege
+
+
+x <- [4,2,3,8,7,5,3,1]
+print(Kivalasztas(x, len(x)))
